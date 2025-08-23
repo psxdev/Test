@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+# Controls when the workflow will run
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  repository_dispatch:
+    types: [run_build]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os[0] }}
+    strategy:
+      matrix:
+        os: [
+         # [macos-15, arm64, bash],
+          [ubuntu-latest, x86_64, bash]
+        ]
+      fail-fast: false
+    
+    
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      
+      - name: Install Ubuntu packages
+      
+      - name: Runs all the stages in the shell
+        run: |
+          apt list --installed
+      
+      
