@@ -35,7 +35,7 @@ jobs:
         run: |
           export VARIABLE=text
           apt list --installed
-      
+          echo $VARIABLE
       - name: Runs all the stages in the shell
         run: |
           echo $VARIABLE
